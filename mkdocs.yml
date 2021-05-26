@@ -3,7 +3,7 @@ site_url: https://splunk.github.io/imt-workshop/
 site_author: Splunk Team
 site_description: >-
   This workshop is going to take you through the best-in-class observability platform
-  for ingesting, monitoring, visualizing and analyzing metrics, traces and spans
+  for ingesting, monitoring, visualizing metrics and logs to troubleshoot real-world performance issues
 
 repo_url: https://github.com/splunk/imt-workshop
 edit_uri: ""
