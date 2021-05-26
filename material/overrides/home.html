@@ -1,0 +1,102 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+<div></div>
+{% extends "overrides/main.html" %}
+{% block tabs %}
+{{ super() }}
+<style>
+  .md-main__inner {
+    margin: 0
+  }
+  .md-content {
+    display: none
+  }
+  .mdx-container {
+    padding-top: 1rem;
+    background: url("images/background.svg") no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    height: 100%
+  }
+  [data-md-color-scheme=slate] .tx-hero .md-button--primary {
+    background-color: var(--md-primary-bg-color);
+    color: #E20082;
+    border-color: var(--md-primary-bg-color);
+    border-radius: .25rem
+  }
+  [data-md-color-scheme=light] .tx-hero .md-button--primary {
+    background-color: #E20082;
+    color: #E20082;
+    border-color: var(--md-primary-bg-color);
+    border-radius: .25rem
+  }
+  .mdx-hero {
+    margin: 0 .8rem;
+    color: currentColor
+  }
+  .mdx-hero h1 {
+    margin-bottom: 1rem;
+    color: currentColor;
+    font-weight: 700
+  }
+  .mdx-hero__content {
+    padding-bottom: 6rem
+  }
+  .mdx-hero .md-button {
+    margin-top: .5rem;
+    margin-right: .5rem;
+    color: var(--md-primary-bg-color);
+    border-radius: .25rem
+  }
+  .mdx-hero .md-button:focus,
+  .mdx-hero .md-button:hover {
+    background-color: #E20082;
+    color: #fff;
+    border-color: #E20082;
+    border-radius: .25rem
+  }
+  @media screen and (min-width:60em) {
+    .md-sidebar--secondary {
+      display: none
+    }
+    .mdx-hero {
+      display: flex;
+      align-items: stretch;
+      justify-items: space-between
+    }
+    .mdx-hero__content {
+      max-width: 20rem;
+      margin-top: 3.5rem;
+      padding-bottom: 14vw
+    }
+  }
+  @media screen and (min-width:76.25em) {
+    .md-sidebar--primary {
+      display: none
+    }
+  }
+  .release-tag {
+    font-weight: 700;
+    font-size: small
+  }
+</style>
+<section class="mdx-container">
+  <div class="md-grid md-typeset">
+    <div class="mdx-hero">
+      <div class="mdx-hero__content">
+        <h1>Monitoring and Troubleshooting</h1>
+        <h2>Get insights into your applications and infrastructure in real-time with Splunk</h2>
+        <p style="font-size: 0.9em">{{ config.site_description }}.</p>
+        <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
+          Get started
+        </a>
+        <br />
+        <p class="release-tag">Version v{{ config.extra.version }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}

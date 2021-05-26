@@ -1,0 +1,140 @@
+site_name: Splunk Infrastructure Monitoring and Troubleshooting Workshop
+site_url: https://splunk.github.io/imt-workshop/
+site_author: Splunk Team
+site_description: >-
+  This workshop is going to take you through the best-in-class observability platform
+  for ingesting, monitoring, visualizing and analyzing metrics, traces and spans
+
+repo_url: https://github.com/splunk/imt-workshop
+edit_uri: ""
+copyright: Copyright &copy; 2021 Splunk Inc. All rights reserved.
+remote_branch: gh-pages
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  favicon: images/favicon.ico
+  logo: images/logo.png
+  font:
+    text: Roboto
+    code: Roboto Mono
+  include_search_page: false
+  search_index_only: true
+  language: en
+  custom_dir: material
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+
+markdown_extensions:
+  - footnotes
+  - admonition
+  - attr_list
+  - pymdownx.tabbed
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.keys
+  - meta
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: true
+
+extra_css:
+  - "stylesheets/extra.css"
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/splunk/imt-workshop
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/splunk
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/splunk/
+  version: 1.0
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      #enable_creation_date: true
+      type: date
+  - minify:
+      minify_html: true
+
+nav:
+  - Home: index.md
+  - Splunk IMT:
+    - Workshop Introduction: otel/index.md
+    - Initial Setup<br /><small>5 minutes</small>:
+      - Access AWS/EC2 instance: otel/connect-info.md 
+    - Get Data In<br /><small>15 minutes</small>:
+      - Deploy the OTel Collector: otel/k3s.md
+      - Deploy and monitor NGINX : otel/nginx.md
+    - Dashboards<br /><small>20 minutes</small>:
+      - Introduction: dashboards/index.md
+      - Editing charts: dashboards/editing.md
+      - Saving charts: dashboards/savingcharts.md
+      - Using filters & formulas: dashboards/filtering.md
+      - SignalFlow: dashboards/signalflow.md
+      - Adding more charts: dashboards/adding-charts.md
+      - Notes and layout: dashboards/dashboarding.md
+    - Detectors<br /><small>10 minutes</small>:
+      - Creating a Detector: detectors/index.md
+      - Creating a Muting Rule: detectors/muting.md
+    - Monitoring as Code<br /><small>10 minutes</small>:
+      - Plan, Apply and Destroy: monitoring-as-code/index.md
+    - Service Bureau<br /><small>10 minutes</small>:
+      - Billing and Usage : servicebureau/billing-and-usage.md
+      - Teams : servicebureau/teams.md
+      - Control Usage: servicebureau/tokens.md
+    - Optional Modules:
+      - Observability Cloud Integration: oncall/optional/sfx_integrations.md
+      - Using Multipass VM: oncall/optional/multipass.md
+      - Create a Detector: oncall/optional/detector.md
+  #- Lambda & APM:
+  #  - Intro: lambda/index.md
+  #  - Getting to know the Mobile Shop: lambda/initial_run_env.md
+  #  - APM for Mobile Shop:
+  #    - Setting up Springboot App : lambda/springboot-apm.md 
+  #    - Getting the first Trace: lambda/springboot-apm-II.md
+  #  - APM for RetailOrder:
+  #    - Basic Instrumentation: lambda/retail-order-I.md
+  #  - APM for RetailOrderPrice:
+  #    - Work in progress: lambda/wip.md
+  #  - APM for RetailOrderDiscount: 
+  #    - Work in progress: lambda/wip.md
+  #  - APM for RetailOrderLine:
+  #    - Basic Instrumentation: lambda/retail-orderline-I.md
+  #  - Setup: lambda/setup.md
+  - '<b>Splunk Cloud</b>':
+    - '<b>Signing up and Getting Started</b><br /><small>30 minutes</small>':
+      - 'Signing Up': splunk/index.md
+      - 'Creating Index': splunk/splunkindex.md
+      - 'Creating HEC Token': splunk/hectoken.md
+      - 'Deploying Splunk Connect for Kubernetes': splunk/sck.md
+      - 'Setting up Data Links for Contextual Logging': splunk/datalinks.md
+  - '<b>Exercises</b>':
+      - 'Mission Possible': splunk/solution.md   
+  - Resources:
+    - Links: resources/index.md
+    - FAQ: resources/faq.md
