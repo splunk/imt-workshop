@@ -83,6 +83,8 @@ plugins:
 
 nav:
   - Home: index.md
+  - Amazon EKS
+    - Get EKS Cluster: eks/readme-b.md
   - Splunk IMT:
     - Workshop Introduction: otel/index.md
     - Initial Setup<br /><small>5 minutes</small>:
