@@ -1,4 +1,4 @@
 ---
 template: overrides/home.html
-title: Splunk Observability Cloud Workshop
+title: Splunk AWS Immersion Day
 ---
