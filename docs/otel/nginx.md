@@ -1,6 +1,6 @@
-# Deploying NGINX in K3s - Lab Summary
+# Deploying NGINX in EKS - Lab Summary
 
-* Deploy a NGINX ReplicaSet into your K3s cluster and confirm the discovery of your NGINX deployment.
+* Deploy a NGINX ReplicaSet into your EKS cluster and confirm the discovery of your NGINX deployment.
 * Run a load test to create metrics and confirm them streaming into Splunk Observability Cloud!
 
 ---
@@ -20,7 +20,7 @@ In the Multipass or AWS/EC2 shell session and change into the `nginx` directory:
 === "Shell Command"
 
     ```text
-    cd ~/workshop/k3s/nginx
+    cd ~/workshop/k8s/nginx
     ```
   
 ---
@@ -56,22 +56,16 @@ Then create the deployment:
     service/nginx created
     ```
 
-Next we will deploy Locust[^2] which is used for creating a load test against NGINX:
+Next we will confirm that NGINX is running as Kubernetes service
 
 === "Shell Command"
 
     ```
-    kubectl create -f locust-deployment.yaml
+    kubectl get svc
     ```
 
-=== "Output"
 
-    ```
-    deployment.apps/nginx-loadgenerator created
-    service/nginx-loadgenerator created
-    ```
-
-Validate the deployment has been successful and that the Locust and NGINX pods are running.
+Validate the deployment has been successful. NGINX will be assigned an external IP. It will take a few minutes for the Elastic Load Balancer to be available. Grab the External-IP of NGINX service and visit the page using browser on your computer.
 
 If you have the Splunk UI open you should see new Pods being started and containers being deployed.
 
@@ -104,30 +98,11 @@ Let's validate this in your shell as well:
     nginx-7b95fb6b6b-lnzsq                                        1/1     Running   0          5m57s
     nginx-7b95fb6b6b-hlx27                                        1/1     Running   0          5m57s
     nginx-7b95fb6b6b-zwns9                                        1/1     Running   0          5m57s
-    svclb-nginx-loadgenerator-nscx4                               1/1     Running   0          2m20s
-    nginx-loadgenerator-755c8f7ff6-x957q                          1/1     Running   0          2m20s
     ```
 
----
 
-## 3. Run Locust load test
-
-Locust is available on port 8080 of the EC2 instance's IP address. Open a new tab in your web browser and go to `http://{==EC2-IP==}:8080/`, you will then be able to see the Locust running.
-
-![Locust](../images/otel/nginx-locust.png)
-
-Set the **Spawn rate** to be 2 and click **Start Swarming**.
-
-![Locust Spawn Rate](../images/otel/nginx-locust-spawn-rate.png)
-
-This will start a gentle continuous load on the application.
-
-![Locust Statistics](../images/otel/nginx-locust-statistics.png)
-
-Validate you are seeing metrics in the UI by going to hamburger icon, top let and select **Dashboards → NGINX → NGINX Servers**. Using the **Overrides** filter on `k8s.cluster.name:`, find the name of your cluster as returned by `echo $(hostname)-k3s-cluster` in the terminal.
+Validate you are seeing metrics in the UI by going to hamburger icon, top let and select **Dashboards → NGINX → NGINX Servers**. Using the **Overrides** filter on `k8s.cluster.name:`, find the name of your cluster as returned by `echo $(hostname)-eks-cluster` in the terminal.
 
 ![NGINX Dashboard](../images/otel/nginx-dashboard.png)
 
 [^1]: A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume. A ConfigMap allows you to decouple environment-specific configuration from your container images, so that your applications are easily portable.
-
-[^2]: [What is Locust?](https://locust.io/){: target=_blank}

@@ -38,4 +38,5 @@ chmod 700 get_helm.sh
 ``` 
 wget https://github.com/splunk/imt-workshop/archive/refs/heads/master.zip
 unzip master.zip
+mv imt-workshop-master workshop
 ```
