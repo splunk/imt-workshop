@@ -87,8 +87,6 @@ nav:
     - Get EKS Cluster: eks/readme-b.md
   - Splunk IMT:
     - Workshop Introduction: otel/index.md
-    - Initial Setup<br /><small>5 minutes</small>:
-      - Access AWS/EC2 instance: otel/connect-info.md 
     - Get Data In<br /><small>15 minutes</small>:
       - Deploy the OTel Collector: otel/k3s.md
       - Deploy and monitor NGINX : otel/nginx.md
