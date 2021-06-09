@@ -9,10 +9,12 @@ Select EC2 from Management Console and select Instances (running). You should se
 
 ![Event Engine](../images/eks/ec2-splunk.png)
 
-Select SplunkWorkshop-box instance and click connect to open a SSH session
-![Event Engine](../images/eks/ec2-splunk.png)
+Now select SplunkWorkshop instance and select connect
+![Event Engine](../images/eks/connect-ec2.png)
 
 ## Verify EKS cluster
+Select EC2 Instance Connect tab and click connect. This will open an SSH session to the EC2 instance. Once the instance is opened check the running EKS cluster. You should see a cluster named
+
 ```
 eksctl get cluster
 ```
@@ -25,6 +27,7 @@ aws eks --region us-west-2 update-kubeconfig --name eksworkshop-eksctl
 ```
 kubectl get nodes
 ```
+If we see our 2 nodes, we know we have authenticated correctly
 ### Install Helm 3
 ```
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
