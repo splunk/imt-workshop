@@ -1,6 +1,6 @@
 # Deploying the OpenTelemetry Collector in Kubernetes
 
-* Use the Splunk Helm chart to install the OpenTelemetry Collector in K3s
+* Use the Splunk Helm chart to install the OpenTelemetry Collector in EKS
 * Explore your cluster in the Kubernetes Navigator
 
 ---
@@ -46,10 +46,10 @@ Install the OpenTelemetry Collector using the Splunk Helm chart. First, add the 
 
     ```
     Using ACCESS_TOKEN=<redacted>
-    Using REALM=eu0
+    Using REALM=us1
     "splunk-otel-collector-chart" has been added to your repositories
     Using ACCESS_TOKEN=<redacted>
-    Using REALM=eu0
+    Using REALM=us1
     Hang tight while we grab the latest from your chart repositories...
     ...Successfully got an update from the "splunk-otel-collector-chart" chart repository
     Update Complete. ⎈Happy Helming!⎈
@@ -65,9 +65,8 @@ Install the OpenTelemetry Collector Helm chart with the following commands, do *
     --set="splunkAccessToken=$ACCESS_TOKEN" \
     --set="clusterName=$(hostname)-k3s-cluster" \
     --set="logsEnabled=false" \
-    --set="environment=$(hostname)-apm-env" \
     splunk-otel-collector-chart/splunk-otel-collector \
-    -f ~/workshop/k3s/otel-collector.yaml
+    -f ~/workshop/k8s/otel-collector.yaml
     ```
 
 === "Example Output"
