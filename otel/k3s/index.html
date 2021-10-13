@@ -10,10 +10,10 @@ Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the &quot;splunk-otel-collector-chart&quot; chart repository
 Update Complete. ⎈Happy Helming!⎈
 </code></pre></div> </div> </div> <p>Install the OpenTelemetry Collector Helm chart with the following commands, do <strong>NOT</strong> edit this:</p> <div class=tabbed-set data-tabs=3:2><input checked=checked id=__tabbed_3_1 name=__tabbed_3 type=radio><label for=__tabbed_3_1>Shell Command</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>helm install splunk-otel-collector \
---set=&quot;splunkRealm=$REALM&quot; \
---set=&quot;splunkAccessToken=$ACCESS_TOKEN&quot; \
+--set=&quot;splunkObservability.realm=$REALM&quot; \
+--set=&quot;splunkObservability.accessToken=$ACCESS_TOKEN&quot; \
 --set=&quot;clusterName=$(hostname)-k3s-cluster&quot; \
---set=&quot;logsEnabled=false&quot; \
+--set=&quot;splunkObservability.logsEnabled=false&quot; \
 splunk-otel-collector-chart/splunk-otel-collector \
 -f ~/workshop/k8s/otel-collector.yaml
 </code></pre></div> </div> <input id=__tabbed_3_2 name=__tabbed_3 type=radio><label for=__tabbed_3_2>Example Output</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>Using ACCESS_TOKEN=&lt;redacted&gt;
@@ -28,7 +28,7 @@ TEST SUITE: None
 </code></pre></div> </div> <input id=__tabbed_4_2 name=__tabbed_4 type=radio><label for=__tabbed_4_2>Example Output</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>NAME                                                          READY   STATUS    RESTARTS   AGE
 splunk-otel-collector-agent-2sk6k                             0/1     Running   0          10s
 splunk-otel-collector-k8s-cluster-receiver-6956d4446f-gwnd7   0/1     Running   0          10s
-</code></pre></div> </div> </div> <p>Ensure there are no errors by tailing the logs from the OpenTelemetry Collector pod. Output should look similar to the log output shown in the Output tab below.</p> <p>Use the label set by the <code>helm</code> install to tail logs (You will need to press <span class=keys><kbd class=key-control>Ctrl</kbd><span>+</span><kbd class=key-c>C</kbd></span> to exit). Or use the installed <code>k9s</code> terminal UI for bonus points!</p> <div class=tabbed-set data-tabs=5:2><input checked=checked id=__tabbed_5_1 name=__tabbed_5 type=radio><label for=__tabbed_5_1>Shell Command</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>kubectl logs -l app=splunk-otel-collector -f
+</code></pre></div> </div> </div> <p>Ensure there are no errors by tailing the logs from the OpenTelemetry Collector pod. Output should look similar to the log output shown in the Output tab below.</p> <p>Use the label set by the <code>helm</code> install to tail logs (You will need to press <span class=keys><kbd class=key-control>Ctrl</kbd><span>+</span><kbd class=key-c>C</kbd></span> to exit). Or use the installed <code>k9s</code> terminal UI for bonus points!</p> <div class=tabbed-set data-tabs=5:2><input checked=checked id=__tabbed_5_1 name=__tabbed_5 type=radio><label for=__tabbed_5_1>Shell Command</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>kubectl logs -l app=splunk-otel-collector -f --container otel-collector
 </code></pre></div> </div> <input id=__tabbed_5_2 name=__tabbed_5 type=radio><label for=__tabbed_5_2>Example Output</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>2021-03-21T16:11:10.900Z        INFO    service/service.go:364  Starting receivers...
 2021-03-21T16:11:10.900Z        INFO    builder/receivers_builder.go:70 Receiver is starting... {&quot;component_kind&quot;: &quot;receiver&quot;, &quot;component_type&quot;: &quot;prometheus&quot;, &quot;component_name&quot;: &quot;prometheus&quot;}
 2021-03-21T16:11:11.009Z        INFO    builder/receivers_builder.go:75 Receiver started.       {&quot;component_kind&quot;: &quot;receiver&quot;, &quot;component_type&quot;: &quot;prometheus&quot;, &quot;component_name&quot;: &quot;prometheus&quot;}
