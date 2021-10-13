@@ -1,5 +1,6 @@
 # Steps to access EKS cluster
 ## Login into AWS console from the Event Engine dashboard
+You are encouraged to use the Firefox web browser. It is because pasting from clipboard into the required web terminal may not work in later steps.
 ![Event Engine](../images/eks/credentials.png)
 
 Remeber to only use "us-west-2" as your region
